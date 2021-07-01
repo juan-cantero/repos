@@ -1,411 +1,410 @@
-<?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://anses.gov.ar/arquitectura/" xmlns:s1="http://anses.gov.ar/arquitectura/AbstractTypes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://anses.gov.ar/arquitectura/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsdl:types>
-    <s:schema elementFormDefault="qualified" targetNamespace="http://anses.gov.ar/arquitectura/">
-      <s:element name="EnvioPruebaMail">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="CuerpoComunicacion" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="EnvioPruebaMailResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="EnvioPruebaMailResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="EnvioUnico">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="CuerpoHTML" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="CuerpoTexto" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="EnvioUnicoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="EnvioUnicoResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="EnvioConAdjunto">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="CuerpoHTML" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="DatosBinarios" type="s:base64Binary" />
-            <s:element minOccurs="0" maxOccurs="1" name="NombreArchivo" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="EnvioConAdjuntoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="EnvioConAdjuntoResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="EnvioPruebaConAdjunto">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="CuerpoComunicacion" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="DatosBinarios" type="s:base64Binary" />
-            <s:element minOccurs="0" maxOccurs="1" name="NombreArchivo" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="EnvioPruebaConAdjuntoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="EnvioPruebaConAdjuntoResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="boolean" type="s:boolean" />
-    </s:schema>
-    <s:schema targetNamespace="http://anses.gov.ar/arquitectura/AbstractTypes">
-      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
-      <s:complexType name="StringArray">
-        <s:complexContent mixed="false">
-          <s:restriction base="soapenc:Array">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
-            </s:sequence>
-          </s:restriction>
-        </s:complexContent>
-      </s:complexType>
-    </s:schema>
-  </wsdl:types>
-  <wsdl:message name="EnvioPruebaMailSoapIn">
-    <wsdl:part name="parameters" element="tns:EnvioPruebaMail" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaMailSoapOut">
-    <wsdl:part name="parameters" element="tns:EnvioPruebaMailResponse" />
-  </wsdl:message>
-  <wsdl:message name="EnvioUnicoSoapIn">
-    <wsdl:part name="parameters" element="tns:EnvioUnico" />
-  </wsdl:message>
-  <wsdl:message name="EnvioUnicoSoapOut">
-    <wsdl:part name="parameters" element="tns:EnvioUnicoResponse" />
-  </wsdl:message>
-  <wsdl:message name="EnvioConAdjuntoSoapIn">
-    <wsdl:part name="parameters" element="tns:EnvioConAdjunto" />
-  </wsdl:message>
-  <wsdl:message name="EnvioConAdjuntoSoapOut">
-    <wsdl:part name="parameters" element="tns:EnvioConAdjuntoResponse" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaConAdjuntoSoapIn">
-    <wsdl:part name="parameters" element="tns:EnvioPruebaConAdjunto" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaConAdjuntoSoapOut">
-    <wsdl:part name="parameters" element="tns:EnvioPruebaConAdjuntoResponse" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaMailHttpGetIn">
-    <wsdl:part name="Asunto" type="s:string" />
-    <wsdl:part name="CorreoElectronico" type="s:string" />
-    <wsdl:part name="CuerpoComunicacion" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaMailHttpGetOut">
-    <wsdl:part name="Body" element="tns:boolean" />
-  </wsdl:message>
-  <wsdl:message name="EnvioUnicoHttpGetIn">
-    <wsdl:part name="CorreoElectronico" type="s:string" />
-    <wsdl:part name="Asunto" type="s:string" />
-    <wsdl:part name="CuerpoHTML" type="s:string" />
-    <wsdl:part name="CuerpoTexto" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="EnvioUnicoHttpGetOut">
-    <wsdl:part name="Body" element="tns:boolean" />
-  </wsdl:message>
-  <wsdl:message name="EnvioConAdjuntoHttpGetIn">
-    <wsdl:part name="CorreoElectronico" type="s:string" />
-    <wsdl:part name="Asunto" type="s:string" />
-    <wsdl:part name="CuerpoHTML" type="s:string" />
-    <wsdl:part name="DatosBinarios" type="s1:StringArray" />
-    <wsdl:part name="NombreArchivo" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="EnvioConAdjuntoHttpGetOut">
-    <wsdl:part name="Body" element="tns:boolean" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaConAdjuntoHttpGetIn">
-    <wsdl:part name="Asunto" type="s:string" />
-    <wsdl:part name="CorreoElectronico" type="s:string" />
-    <wsdl:part name="CuerpoComunicacion" type="s:string" />
-    <wsdl:part name="DatosBinarios" type="s1:StringArray" />
-    <wsdl:part name="NombreArchivo" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaConAdjuntoHttpGetOut">
-    <wsdl:part name="Body" element="tns:boolean" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaMailHttpPostIn">
-    <wsdl:part name="Asunto" type="s:string" />
-    <wsdl:part name="CorreoElectronico" type="s:string" />
-    <wsdl:part name="CuerpoComunicacion" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaMailHttpPostOut">
-    <wsdl:part name="Body" element="tns:boolean" />
-  </wsdl:message>
-  <wsdl:message name="EnvioUnicoHttpPostIn">
-    <wsdl:part name="CorreoElectronico" type="s:string" />
-    <wsdl:part name="Asunto" type="s:string" />
-    <wsdl:part name="CuerpoHTML" type="s:string" />
-    <wsdl:part name="CuerpoTexto" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="EnvioUnicoHttpPostOut">
-    <wsdl:part name="Body" element="tns:boolean" />
-  </wsdl:message>
-  <wsdl:message name="EnvioConAdjuntoHttpPostIn">
-    <wsdl:part name="CorreoElectronico" type="s:string" />
-    <wsdl:part name="Asunto" type="s:string" />
-    <wsdl:part name="CuerpoHTML" type="s:string" />
-    <wsdl:part name="DatosBinarios" type="s1:StringArray" />
-    <wsdl:part name="NombreArchivo" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="EnvioConAdjuntoHttpPostOut">
-    <wsdl:part name="Body" element="tns:boolean" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaConAdjuntoHttpPostIn">
-    <wsdl:part name="Asunto" type="s:string" />
-    <wsdl:part name="CorreoElectronico" type="s:string" />
-    <wsdl:part name="CuerpoComunicacion" type="s:string" />
-    <wsdl:part name="DatosBinarios" type="s1:StringArray" />
-    <wsdl:part name="NombreArchivo" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="EnvioPruebaConAdjuntoHttpPostOut">
-    <wsdl:part name="Body" element="tns:boolean" />
-  </wsdl:message>
-  <wsdl:portType name="EnviarMailSoap">
-    <wsdl:operation name="EnvioPruebaMail">
-      <wsdl:input message="tns:EnvioPruebaMailSoapIn" />
-      <wsdl:output message="tns:EnvioPruebaMailSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="EnvioUnico">
-      <wsdl:input message="tns:EnvioUnicoSoapIn" />
-      <wsdl:output message="tns:EnvioUnicoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="EnvioConAdjunto">
-      <wsdl:input message="tns:EnvioConAdjuntoSoapIn" />
-      <wsdl:output message="tns:EnvioConAdjuntoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="EnvioPruebaConAdjunto">
-      <wsdl:input message="tns:EnvioPruebaConAdjuntoSoapIn" />
-      <wsdl:output message="tns:EnvioPruebaConAdjuntoSoapOut" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="EnviarMailHttpGet">
-    <wsdl:operation name="EnvioPruebaMail">
-      <wsdl:input message="tns:EnvioPruebaMailHttpGetIn" />
-      <wsdl:output message="tns:EnvioPruebaMailHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="EnvioUnico">
-      <wsdl:input message="tns:EnvioUnicoHttpGetIn" />
-      <wsdl:output message="tns:EnvioUnicoHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="EnvioConAdjunto">
-      <wsdl:input message="tns:EnvioConAdjuntoHttpGetIn" />
-      <wsdl:output message="tns:EnvioConAdjuntoHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="EnvioPruebaConAdjunto">
-      <wsdl:input message="tns:EnvioPruebaConAdjuntoHttpGetIn" />
-      <wsdl:output message="tns:EnvioPruebaConAdjuntoHttpGetOut" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="EnviarMailHttpPost">
-    <wsdl:operation name="EnvioPruebaMail">
-      <wsdl:input message="tns:EnvioPruebaMailHttpPostIn" />
-      <wsdl:output message="tns:EnvioPruebaMailHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="EnvioUnico">
-      <wsdl:input message="tns:EnvioUnicoHttpPostIn" />
-      <wsdl:output message="tns:EnvioUnicoHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="EnvioConAdjunto">
-      <wsdl:input message="tns:EnvioConAdjuntoHttpPostIn" />
-      <wsdl:output message="tns:EnvioConAdjuntoHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="EnvioPruebaConAdjunto">
-      <wsdl:input message="tns:EnvioPruebaConAdjuntoHttpPostIn" />
-      <wsdl:output message="tns:EnvioPruebaConAdjuntoHttpPostOut" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="EnviarMailSoap" type="tns:EnviarMailSoap">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="EnvioPruebaMail">
-      <soap:operation soapAction="http://anses.gov.ar/arquitectura/EnvioPruebaMail" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioUnico">
-      <soap:operation soapAction="http://anses.gov.ar/arquitectura/EnvioUnico" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioConAdjunto">
-      <soap:operation soapAction="http://anses.gov.ar/arquitectura/EnvioConAdjunto" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioPruebaConAdjunto">
-      <soap:operation soapAction="http://anses.gov.ar/arquitectura/EnvioPruebaConAdjunto" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="EnviarMailSoap12" type="tns:EnviarMailSoap">
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="EnvioPruebaMail">
-      <soap12:operation soapAction="http://anses.gov.ar/arquitectura/EnvioPruebaMail" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioUnico">
-      <soap12:operation soapAction="http://anses.gov.ar/arquitectura/EnvioUnico" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioConAdjunto">
-      <soap12:operation soapAction="http://anses.gov.ar/arquitectura/EnvioConAdjunto" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioPruebaConAdjunto">
-      <soap12:operation soapAction="http://anses.gov.ar/arquitectura/EnvioPruebaConAdjunto" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="EnviarMailHttpGet" type="tns:EnviarMailHttpGet">
-    <http:binding verb="GET" />
-    <wsdl:operation name="EnvioPruebaMail">
-      <http:operation location="/EnvioPruebaMail" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioUnico">
-      <http:operation location="/EnvioUnico" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioConAdjunto">
-      <http:operation location="/EnvioConAdjunto" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioPruebaConAdjunto">
-      <http:operation location="/EnvioPruebaConAdjunto" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="EnviarMailHttpPost" type="tns:EnviarMailHttpPost">
-    <http:binding verb="POST" />
-    <wsdl:operation name="EnvioPruebaMail">
-      <http:operation location="/EnvioPruebaMail" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioUnico">
-      <http:operation location="/EnvioUnico" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioConAdjunto">
-      <http:operation location="/EnvioConAdjunto" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EnvioPruebaConAdjunto">
-      <http:operation location="/EnvioPruebaConAdjunto" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="EnviarMail">
-    <wsdl:port name="EnviarMailSoap" binding="tns:EnviarMailSoap">
-      <soap:address location="http://labprueba3:8080/checkmail/enviarmail.asmx" />
-    </wsdl:port>
-    <wsdl:port name="EnviarMailSoap12" binding="tns:EnviarMailSoap12">
-      <soap12:address location="http://labprueba3:8080/checkmail/enviarmail.asmx" />
-    </wsdl:port>
-    <wsdl:port name="EnviarMailHttpGet" binding="tns:EnviarMailHttpGet">
-      <http:address location="http://labprueba3:8080/checkmail/enviarmail.asmx" />
-    </wsdl:port>
-    <wsdl:port name="EnviarMailHttpPost" binding="tns:EnviarMailHttpPost">
-      <http:address location="http://labprueba3:8080/checkmail/enviarmail.asmx" />
-    </wsdl:port>
-  </wsdl:service>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://anses.gov.ar/arquitectura/" xmlns:s1="http://anses.gov.ar/arquitectura/AbstractTypes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://anses.gov.ar/arquitectura/">
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="http://anses.gov.ar/arquitectura/">
+<s:element name="EnvioPruebaMail">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CuerpoComunicacion" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="EnvioPruebaMailResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="EnvioPruebaMailResult" type="s:boolean"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="EnvioUnico">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CuerpoHTML" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CuerpoTexto" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="EnvioUnicoResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="EnvioUnicoResult" type="s:boolean"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="EnvioConAdjunto">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CuerpoHTML" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="DatosBinarios" type="s:base64Binary"/>
+<s:element minOccurs="0" maxOccurs="1" name="NombreArchivo" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="EnvioConAdjuntoResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="EnvioConAdjuntoResult" type="s:boolean"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="EnvioPruebaConAdjunto">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CuerpoComunicacion" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="DatosBinarios" type="s:base64Binary"/>
+<s:element minOccurs="0" maxOccurs="1" name="NombreArchivo" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="EnvioPruebaConAdjuntoResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="EnvioPruebaConAdjuntoResult" type="s:boolean"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="boolean" type="s:boolean"/>
+</s:schema>
+<s:schema targetNamespace="http://anses.gov.ar/arquitectura/AbstractTypes">
+<s:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+<s:complexType name="StringArray">
+<s:complexContent mixed="false">
+<s:restriction base="soapenc:Array">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string"/>
+</s:sequence>
+</s:restriction>
+</s:complexContent>
+</s:complexType>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="EnvioPruebaMailSoapIn">
+<wsdl:part name="parameters" element="tns:EnvioPruebaMail"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaMailSoapOut">
+<wsdl:part name="parameters" element="tns:EnvioPruebaMailResponse"/>
+</wsdl:message>
+<wsdl:message name="EnvioUnicoSoapIn">
+<wsdl:part name="parameters" element="tns:EnvioUnico"/>
+</wsdl:message>
+<wsdl:message name="EnvioUnicoSoapOut">
+<wsdl:part name="parameters" element="tns:EnvioUnicoResponse"/>
+</wsdl:message>
+<wsdl:message name="EnvioConAdjuntoSoapIn">
+<wsdl:part name="parameters" element="tns:EnvioConAdjunto"/>
+</wsdl:message>
+<wsdl:message name="EnvioConAdjuntoSoapOut">
+<wsdl:part name="parameters" element="tns:EnvioConAdjuntoResponse"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaConAdjuntoSoapIn">
+<wsdl:part name="parameters" element="tns:EnvioPruebaConAdjunto"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaConAdjuntoSoapOut">
+<wsdl:part name="parameters" element="tns:EnvioPruebaConAdjuntoResponse"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaMailHttpGetIn">
+<wsdl:part name="Asunto" type="s:string"/>
+<wsdl:part name="CorreoElectronico" type="s:string"/>
+<wsdl:part name="CuerpoComunicacion" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaMailHttpGetOut">
+<wsdl:part name="Body" element="tns:boolean"/>
+</wsdl:message>
+<wsdl:message name="EnvioUnicoHttpGetIn">
+<wsdl:part name="CorreoElectronico" type="s:string"/>
+<wsdl:part name="Asunto" type="s:string"/>
+<wsdl:part name="CuerpoHTML" type="s:string"/>
+<wsdl:part name="CuerpoTexto" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="EnvioUnicoHttpGetOut">
+<wsdl:part name="Body" element="tns:boolean"/>
+</wsdl:message>
+<wsdl:message name="EnvioConAdjuntoHttpGetIn">
+<wsdl:part name="CorreoElectronico" type="s:string"/>
+<wsdl:part name="Asunto" type="s:string"/>
+<wsdl:part name="CuerpoHTML" type="s:string"/>
+<wsdl:part name="DatosBinarios" type="s1:StringArray"/>
+<wsdl:part name="NombreArchivo" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="EnvioConAdjuntoHttpGetOut">
+<wsdl:part name="Body" element="tns:boolean"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaConAdjuntoHttpGetIn">
+<wsdl:part name="Asunto" type="s:string"/>
+<wsdl:part name="CorreoElectronico" type="s:string"/>
+<wsdl:part name="CuerpoComunicacion" type="s:string"/>
+<wsdl:part name="DatosBinarios" type="s1:StringArray"/>
+<wsdl:part name="NombreArchivo" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaConAdjuntoHttpGetOut">
+<wsdl:part name="Body" element="tns:boolean"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaMailHttpPostIn">
+<wsdl:part name="Asunto" type="s:string"/>
+<wsdl:part name="CorreoElectronico" type="s:string"/>
+<wsdl:part name="CuerpoComunicacion" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaMailHttpPostOut">
+<wsdl:part name="Body" element="tns:boolean"/>
+</wsdl:message>
+<wsdl:message name="EnvioUnicoHttpPostIn">
+<wsdl:part name="CorreoElectronico" type="s:string"/>
+<wsdl:part name="Asunto" type="s:string"/>
+<wsdl:part name="CuerpoHTML" type="s:string"/>
+<wsdl:part name="CuerpoTexto" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="EnvioUnicoHttpPostOut">
+<wsdl:part name="Body" element="tns:boolean"/>
+</wsdl:message>
+<wsdl:message name="EnvioConAdjuntoHttpPostIn">
+<wsdl:part name="CorreoElectronico" type="s:string"/>
+<wsdl:part name="Asunto" type="s:string"/>
+<wsdl:part name="CuerpoHTML" type="s:string"/>
+<wsdl:part name="DatosBinarios" type="s1:StringArray"/>
+<wsdl:part name="NombreArchivo" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="EnvioConAdjuntoHttpPostOut">
+<wsdl:part name="Body" element="tns:boolean"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaConAdjuntoHttpPostIn">
+<wsdl:part name="Asunto" type="s:string"/>
+<wsdl:part name="CorreoElectronico" type="s:string"/>
+<wsdl:part name="CuerpoComunicacion" type="s:string"/>
+<wsdl:part name="DatosBinarios" type="s1:StringArray"/>
+<wsdl:part name="NombreArchivo" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="EnvioPruebaConAdjuntoHttpPostOut">
+<wsdl:part name="Body" element="tns:boolean"/>
+</wsdl:message>
+<wsdl:portType name="EnviarMailSoap">
+<wsdl:operation name="EnvioPruebaMail">
+<wsdl:input message="tns:EnvioPruebaMailSoapIn"/>
+<wsdl:output message="tns:EnvioPruebaMailSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="EnvioUnico">
+<wsdl:input message="tns:EnvioUnicoSoapIn"/>
+<wsdl:output message="tns:EnvioUnicoSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="EnvioConAdjunto">
+<wsdl:input message="tns:EnvioConAdjuntoSoapIn"/>
+<wsdl:output message="tns:EnvioConAdjuntoSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="EnvioPruebaConAdjunto">
+<wsdl:input message="tns:EnvioPruebaConAdjuntoSoapIn"/>
+<wsdl:output message="tns:EnvioPruebaConAdjuntoSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="EnviarMailHttpGet">
+<wsdl:operation name="EnvioPruebaMail">
+<wsdl:input message="tns:EnvioPruebaMailHttpGetIn"/>
+<wsdl:output message="tns:EnvioPruebaMailHttpGetOut"/>
+</wsdl:operation>
+<wsdl:operation name="EnvioUnico">
+<wsdl:input message="tns:EnvioUnicoHttpGetIn"/>
+<wsdl:output message="tns:EnvioUnicoHttpGetOut"/>
+</wsdl:operation>
+<wsdl:operation name="EnvioConAdjunto">
+<wsdl:input message="tns:EnvioConAdjuntoHttpGetIn"/>
+<wsdl:output message="tns:EnvioConAdjuntoHttpGetOut"/>
+</wsdl:operation>
+<wsdl:operation name="EnvioPruebaConAdjunto">
+<wsdl:input message="tns:EnvioPruebaConAdjuntoHttpGetIn"/>
+<wsdl:output message="tns:EnvioPruebaConAdjuntoHttpGetOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="EnviarMailHttpPost">
+<wsdl:operation name="EnvioPruebaMail">
+<wsdl:input message="tns:EnvioPruebaMailHttpPostIn"/>
+<wsdl:output message="tns:EnvioPruebaMailHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="EnvioUnico">
+<wsdl:input message="tns:EnvioUnicoHttpPostIn"/>
+<wsdl:output message="tns:EnvioUnicoHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="EnvioConAdjunto">
+<wsdl:input message="tns:EnvioConAdjuntoHttpPostIn"/>
+<wsdl:output message="tns:EnvioConAdjuntoHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="EnvioPruebaConAdjunto">
+<wsdl:input message="tns:EnvioPruebaConAdjuntoHttpPostIn"/>
+<wsdl:output message="tns:EnvioPruebaConAdjuntoHttpPostOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="EnviarMailSoap" type="tns:EnviarMailSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="EnvioPruebaMail">
+<soap:operation soapAction="http://anses.gov.ar/arquitectura/EnvioPruebaMail" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioUnico">
+<soap:operation soapAction="http://anses.gov.ar/arquitectura/EnvioUnico" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioConAdjunto">
+<soap:operation soapAction="http://anses.gov.ar/arquitectura/EnvioConAdjunto" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioPruebaConAdjunto">
+<soap:operation soapAction="http://anses.gov.ar/arquitectura/EnvioPruebaConAdjunto" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="EnviarMailSoap12" type="tns:EnviarMailSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="EnvioPruebaMail">
+<soap12:operation soapAction="http://anses.gov.ar/arquitectura/EnvioPruebaMail" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioUnico">
+<soap12:operation soapAction="http://anses.gov.ar/arquitectura/EnvioUnico" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioConAdjunto">
+<soap12:operation soapAction="http://anses.gov.ar/arquitectura/EnvioConAdjunto" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioPruebaConAdjunto">
+<soap12:operation soapAction="http://anses.gov.ar/arquitectura/EnvioPruebaConAdjunto" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="EnviarMailHttpGet" type="tns:EnviarMailHttpGet">
+<http:binding verb="GET"/>
+<wsdl:operation name="EnvioPruebaMail">
+<http:operation location="/EnvioPruebaMail"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioUnico">
+<http:operation location="/EnvioUnico"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioConAdjunto">
+<http:operation location="/EnvioConAdjunto"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioPruebaConAdjunto">
+<http:operation location="/EnvioPruebaConAdjunto"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="EnviarMailHttpPost" type="tns:EnviarMailHttpPost">
+<http:binding verb="POST"/>
+<wsdl:operation name="EnvioPruebaMail">
+<http:operation location="/EnvioPruebaMail"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioUnico">
+<http:operation location="/EnvioUnico"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioConAdjunto">
+<http:operation location="/EnvioConAdjunto"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="EnvioPruebaConAdjunto">
+<http:operation location="/EnvioPruebaConAdjunto"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="EnviarMail">
+<wsdl:port name="EnviarMailSoap" binding="tns:EnviarMailSoap">
+<soap:address location="http://labprueba3:8080/checkmail/enviarmail.asmx"/>
+</wsdl:port>
+<wsdl:port name="EnviarMailSoap12" binding="tns:EnviarMailSoap12">
+<soap12:address location="http://labprueba3:8080/checkmail/enviarmail.asmx"/>
+</wsdl:port>
+<wsdl:port name="EnviarMailHttpGet" binding="tns:EnviarMailHttpGet">
+<http:address location="http://labprueba3:8080/checkmail/enviarmail.asmx"/>
+</wsdl:port>
+<wsdl:port name="EnviarMailHttpPost" binding="tns:EnviarMailHttpPost">
+<http:address location="http://labprueba3:8080/checkmail/enviarmail.asmx"/>
+</wsdl:port>
+</wsdl:service>
 </wsdl:definitions>
