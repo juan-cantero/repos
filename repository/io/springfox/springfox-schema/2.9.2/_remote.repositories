@@ -1,4 +1,5 @@
 #NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Sep 07 11:06:59 ART 2021
+#Tue Sep 07 12:45:29 ART 2021
 springfox-schema-2.9.2.jar>central=
+springfox-schema-2.9.2-sources.jar>central=
 springfox-schema-2.9.2.pom>central=
